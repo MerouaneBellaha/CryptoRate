@@ -40,7 +40,7 @@ extension ViewController: CurrencyManagerDelegate {
 
 extension ViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return currencyManager.currencyArray.count
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
