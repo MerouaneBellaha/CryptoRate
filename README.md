@@ -8,7 +8,7 @@ The app should display the rate of 1 Bitcoin against a regular currency.
 
 I went a bith further and added/changed few things:
 
-- added another component to the UIPickerView to choose between multiple crypto currency ( not Bitcoin only 
+- added another component to the UIPickerView to choose between multiple crypto currency ( not Bitcoin only )
 - changed the design
 
 What's feature left to add :
