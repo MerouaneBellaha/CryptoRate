@@ -1,4 +1,6 @@
 
+![](/CryptoRate.png)
+
 This application has been made as part of the "Complete iOS App Development Bootcamp" by Dr.Angela Yu.
 
 Section 13: Networking and API Challenge
