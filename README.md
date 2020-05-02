@@ -13,7 +13,7 @@ I went a bith further and added/changed few things:
 - added another component to the UIPickerView to choose between multiple crypto currency ( not Bitcoin only )
 - changed the design
 
-What's feature left to add :
+Features left to add :
 
-- Fetch crypto currency and regular currency list from the API to fill the currency 2d Array.
+- Fetch crypto currency and regular currency list from the API to fill dynamically the currency 2d Array.
 - Reverse rate functionnality: 1 Bitcoin = x Euros -> 1 euros = x Bictoin
