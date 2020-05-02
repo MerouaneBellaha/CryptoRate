@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BbX-Nk-DVL">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="mim-MF-VuB">
+            <objects>
+                <viewController id="BbX-Nk-DVL" customClass="ViewController" customModule="CryptoRate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gG3-W6-MTt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lob-cZ-4Ri">
+                                <rect key="frame" x="0.0" y="116" width="414" height="664"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CryptoRate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skg-HN-gxF">
+                                        <rect key="frame" x="70.5" y="0.0" width="273.5" height="216"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="230" id="I24-nq-pCs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="45"/>
+                                        <color key="textColor" red="0.39800161119999999" green="0.28154492380000001" blue="0.45528399939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dlq-KA-7cC">
+                                        <rect key="frame" x="56" y="224" width="302.5" height="216"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0K-SN-R0c" userLabel="Crypto Currency Label">
+                                                <rect key="frame" x="0.0" y="93" width="94" height="30.5"/>
+                                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="26"/>
+                                                <color key="textColor" red="1" green="0.48200261589999999" blue="0.19370800260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="your" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6W-Ei-LYG" userLabel="Rate Label">
+                                                <rect key="frame" x="104" y="93" width="63" height="30.5"/>
+                                                <fontDescription key="fontDescription" name="Menlo-BoldItalic" family="Menlo" pointSize="26"/>
+                                                <color key="textColor" red="1" green="0.74976891280000002" blue="0.006502680946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZm-KJ-eqP">
+                                                <rect key="frame" x="177" y="93" width="125.5" height="30.5"/>
+                                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="26"/>
+                                                <color key="textColor" red="1" green="0.48200261589999999" blue="0.19370800260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJw-Y2-3nz">
+                                        <rect key="frame" x="47" y="448" width="320" height="216"/>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16240012649999999" green="0.0073312111200000002" blue="0.24738675360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="aqW-9C-LN0" firstAttribute="trailing" secondItem="Lob-cZ-4Ri" secondAttribute="trailing" id="Tc8-tC-RTD"/>
+                            <constraint firstItem="Lob-cZ-4Ri" firstAttribute="leading" secondItem="aqW-9C-LN0" secondAttribute="leading" id="ZiR-qM-ZmT"/>
+                            <constraint firstItem="Lob-cZ-4Ri" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aqW-9C-LN0" secondAttribute="top" constant="10" id="gob-27-fSv"/>
+                            <constraint firstItem="Lob-cZ-4Ri" firstAttribute="centerY" secondItem="gG3-W6-MTt" secondAttribute="centerY" id="vOO-SQ-dZI"/>
+                            <constraint firstItem="aqW-9C-LN0" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Lob-cZ-4Ri" secondAttribute="bottom" constant="10" id="yUb-Nq-L1J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aqW-9C-LN0"/>
+                    </view>
+                    <connections>
+                        <outlet property="cryptoCurrencyLabel" destination="n0K-SN-R0c" id="DHk-ft-FUK"/>
+                        <outlet property="currencyLabel" destination="nZm-KJ-eqP" id="ZjV-D9-A6g"/>
+                        <outlet property="currencyPicker" destination="BJw-Y2-3nz" id="27y-ve-zNg"/>
+                        <outlet property="rateLabel" destination="Y6W-Ei-LYG" id="iah-Rg-uMG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kBq-cF-F16" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
+        </scene>
+    </scenes>
+</document>

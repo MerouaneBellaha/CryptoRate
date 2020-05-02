@@ -13,6 +13,9 @@
 		CB9AD096245DB522003C1FA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9AD094245DB522003C1FA2 /* Main.storyboard */; };
 		CB9AD098245DB524003C1FA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB9AD097245DB524003C1FA2 /* Assets.xcassets */; };
 		CB9AD09B245DB524003C1FA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9AD099245DB524003C1FA2 /* LaunchScreen.storyboard */; };
+		CB9AD0A7245DB6AF003C1FA2 /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AD0A6245DB6AF003C1FA2 /* CurrencyManager.swift */; };
+		CB9AD0A9245DB6D1003C1FA2 /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AD0A8245DB6D1003C1FA2 /* CurrencyData.swift */; };
+		CB9AD0AB245DB6E6003C1FA2 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AD0AA245DB6E6003C1FA2 /* CurrencyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +26,10 @@
 		CB9AD095245DB522003C1FA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB9AD097245DB524003C1FA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB9AD09A245DB524003C1FA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CB9AD09C245DB524003C1FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB9AD09C245DB524003C1FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
+		CB9AD0A6245DB6AF003C1FA2 /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
+		CB9AD0A8245DB6D1003C1FA2 /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
+		CB9AD0AA245DB6E6003C1FA2 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				CB9AD08D245DB522003C1FA2 /* CryptoRate */,
+				CB9AD0A5245DB632003C1FA2 /* Supporting Files */,
 				CB9AD08C245DB522003C1FA2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,15 +63,49 @@
 		CB9AD08D245DB522003C1FA2 /* CryptoRate */ = {
 			isa = PBXGroup;
 			children = (
+				CB9AD0A4245DB5B0003C1FA2 /* View */,
+				CB9AD0A3245DB5A8003C1FA2 /* Controller */,
+				CB9AD0A2245DB598003C1FA2 /* Model */,
+			);
+			path = CryptoRate;
+			sourceTree = "<group>";
+		};
+		CB9AD0A2245DB598003C1FA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB9AD0A6245DB6AF003C1FA2 /* CurrencyManager.swift */,
+				CB9AD0A8245DB6D1003C1FA2 /* CurrencyData.swift */,
+				CB9AD0AA245DB6E6003C1FA2 /* CurrencyModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CB9AD0A3245DB5A8003C1FA2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB9AD092245DB522003C1FA2 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CB9AD0A4245DB5B0003C1FA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB9AD094245DB522003C1FA2 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB9AD0A5245DB632003C1FA2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				CB9AD08E245DB522003C1FA2 /* AppDelegate.swift */,
 				CB9AD090245DB522003C1FA2 /* SceneDelegate.swift */,
-				CB9AD092245DB522003C1FA2 /* ViewController.swift */,
-				CB9AD094245DB522003C1FA2 /* Main.storyboard */,
 				CB9AD097245DB524003C1FA2 /* Assets.xcassets */,
 				CB9AD099245DB524003C1FA2 /* LaunchScreen.storyboard */,
 				CB9AD09C245DB524003C1FA2 /* Info.plist */,
 			);
-			path = CryptoRate;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +181,9 @@
 			files = (
 				CB9AD093245DB522003C1FA2 /* ViewController.swift in Sources */,
 				CB9AD08F245DB522003C1FA2 /* AppDelegate.swift in Sources */,
+				CB9AD0AB245DB6E6003C1FA2 /* CurrencyModel.swift in Sources */,
+				CB9AD0A7245DB6AF003C1FA2 /* CurrencyManager.swift in Sources */,
+				CB9AD0A9245DB6D1003C1FA2 /* CurrencyData.swift in Sources */,
 				CB9AD091245DB522003C1FA2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,7 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8M973GY56;
-				INFOPLIST_FILE = CryptoRate/Info.plist;
+				INFOPLIST_FILE = "/Users/merouanebellaha/Desktop/workPlace/CryptoRate/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +348,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8M973GY56;
-				INFOPLIST_FILE = CryptoRate/Info.plist;
+				INFOPLIST_FILE = "/Users/merouanebellaha/Desktop/workPlace/CryptoRate/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
