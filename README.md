@@ -3,7 +3,7 @@
 
 This application has been made as part of the "Complete iOS App Development Bootcamp" by Dr.Angela Yu.
 
-Section 13: Networking and API Challenge
+Section 14: Networking and API Challenge
 
 The objective of this challenge was to apply usage of URLSession to make HTTP requests and JSONDecoder for JSON parsing.
 The app should display the rate of 1 Bitcoin against a regular currency.
