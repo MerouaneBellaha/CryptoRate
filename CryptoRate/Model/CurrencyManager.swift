@@ -8,53 +8,44 @@
 
 import Foundation
 
-protocol CurrencyManagerDelegate: class {
-    func didUpdateRate(rate: CurrencyModel)
-    func didFailWithError(error: Error)
-}
+class CurrencyManager {
 
-struct CurrencyManager {
-
-    let baseURL = "https://rest.coinapi.io/v1/exchangerate/"
-    let apiKey = "?apikey=93E0C214-4B73-4597-AB59-9A14899A2E71"
+    private let baseURL = "https://rest.coinapi.io/v1/exchangerate/"
+    private let apiKey = "?apikey=93E0C214-4B73-4597-AB59-9A14899A2E71"
 
     let currencyArray = [
         ["BTC", "ETH", "XRP", "LTC", "BCH"],
         ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
     ]
 
-    weak var delegate: CurrencyManagerDelegate?
+    static var shared = CurrencyManager()
+    private var task: URLSessionDataTask?
 
-    func getRatePrice(for currency: String, and cryptoCurrency: String) {
-        let stringURL = baseURL+cryptoCurrency+"/"+currency+apiKey
-        performRequest(with: stringURL)
-    }
+    private init() {}
 
-    func performRequest(with urlString: String) {
-        guard let url = URL(string: urlString) else { return }
+    func getRates(for currency: String, and cryptoCurrency: String, callBack: @escaping (CurrencyModel?, Bool) -> ()) {
+        guard let request = URL(string: baseURL+cryptoCurrency+"/"+currency+apiKey) else { return }
         let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { data, _, error in
-            if error != nil {
-                self.delegate?.didFailWithError(error: error!)
-                return
-            }
-            if let safeData = data {
-                guard let rate = self.parseJSON(safeData) else { return }
-                self.delegate?.didUpdateRate(rate: rate)
-            }
-        }
-        task.resume()
-    }
 
-    func parseJSON(_ currencyData: Data) -> CurrencyModel? {
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try decoder.decode(CurrencyData.self, from: currencyData)
-            let rate = decodedData.rate
-            return CurrencyModel(rate: rate)
-        } catch {
-            self.delegate?.didFailWithError(error: error)
-            return nil
+        task?.cancel()
+        task = session.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
+                guard let data = data, error == nil else {
+                    callBack(nil, false)
+                    return
+                }
+                guard let response = response as? HTTPURLResponse,
+                    response.statusCode == 200 else {
+                        callBack(nil, false)
+                        return
+                }
+                guard let responseJson = try? JSONDecoder().decode(CurrencyData.self, from: data) else {
+                    callBack(nil, false)
+                    return
+                }
+                callBack(CurrencyModel(rate: responseJson.rate), true)
+            }
         }
+        task?.resume()
     }
 }
