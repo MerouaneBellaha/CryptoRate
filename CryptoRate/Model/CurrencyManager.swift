@@ -48,30 +48,4 @@ class CurrencyManager {
         }
         task?.resume()
     }
-
-//    func getRates(for currency: String, and cryptoCurrency: String, callBack: @escaping (CurrencyModel?, Bool) -> ()) {
-//        guard let request = URL(string: baseURL+cryptoCurrency+"/"+currency+apiKey) else { return }
-//        let session = URLSession(configuration: .default)
-//
-//        task?.cancel()
-//        task = session.dataTask(with: request) { (data, response, error) in
-//            DispatchQueue.main.async {
-//                guard let data = data, error == nil else {
-//                    callBack(nil, false)
-//                    return
-//                }
-//                guard let response = response as? HTTPURLResponse,
-//                    response.statusCode == 200 else {
-//                        callBack(nil, false)
-//                        return
-//                }
-//                guard let responseJson = try? JSONDecoder().decode(CurrencyData.self, from: data) else {
-//                    callBack(nil, false)
-//                    return
-//                }
-//                callBack(CurrencyModel(rate: responseJson.rate), true)
-//            }
-//        }
-//        task?.resume()
-//    }
 }

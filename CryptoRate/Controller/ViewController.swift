@@ -52,14 +52,6 @@ extension ViewController: UIPickerViewDelegate {
             case .success(let rate):
                 self.rateLabel.text = rate?.formatedRate
             }
-
-            //        CurrencyManager.shared.getRates(for: currency, and: cryptoCurrency) { (rate, success) in
-            //            guard success, let rate = rate else {
-            //                print("error")
-            //                return
-            //            }
-            //            self.rateLabel.text = rate.formatedRate
-            //        }
         }
     }
 }
