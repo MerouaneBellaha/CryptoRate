@@ -23,7 +23,7 @@ class CurrencyManager {
 
     private init() {}
 
-    func getRates(for currency: String, and cryptoCurrency: String, callBack: @escaping (CurrencyModel?, Bool) -> ()) {
+    func getRates(for currency: String, and cryptoCurrency: String, callBack: @escaping (Result<CurrencyModel?, Error>) -> ()) {
         guard let request = URL(string: baseURL+cryptoCurrency+"/"+currency+apiKey) else { return }
         let session = URLSession(configuration: .default)
 
@@ -31,19 +31,19 @@ class CurrencyManager {
         task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
-                    callBack(nil, false)
+                    callBack(.failure(error!)) // mieux déballer
                     return
                 }
                 guard let response = response as? HTTPURLResponse,
                     response.statusCode == 200 else {
-                        callBack(nil, false)
+                        callBack(.failure(error!))
                         return
                 }
                 guard let responseJson = try? JSONDecoder().decode(CurrencyData.self, from: data) else {
-                    callBack(nil, false)
+                    callBack(.failure(error!))
                     return
                 }
-                callBack(CurrencyModel(rate: responseJson.rate), true)
+                callBack(.success(CurrencyModel(rate: responseJson.rate)))
             }
         }
         task?.resume()

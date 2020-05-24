@@ -43,12 +43,15 @@ extension ViewController: UIPickerViewDelegate {
         let currency = CurrencyManager.shared.currencyArray[1][pickerView.selectedRow(inComponent: 1)]
         cryptoCurrencyLabel.text = cryptoCurrency
         currencyLabel.text = currency
-        CurrencyManager.shared.getRates(for: currency, and: cryptoCurrency) { (rate, success) in
-            guard success, let rate = rate else {
-                print("error")
-                return
+
+
+        CurrencyManager.shared.getRates(for: currency, and: cryptoCurrency) { (result) in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let rate):
+                self.rateLabel.text = rate?.formatedRate
             }
-            self.rateLabel.text = rate.formatedRate
         }
     }
 }
