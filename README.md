@@ -12,9 +12,9 @@ I went a bith further and added/changed few things:
 
 - added another component to the UIPickerView to choose between multiple crypto currency ( not Bitcoin only )
 - changed the design
+- cleaned the networking structure
+- used ResultType through closure instead of protocol delegation method
 
 What's left to do :
 
-- Must clean the way to fetch Data
-- Fetch crypto currency and regular currency list from the API to fill dynamically the currency 2d Array.
 - Reverse rate functionnality: 1 Bitcoin = x Euros -> 1 euros = x Bictoin
