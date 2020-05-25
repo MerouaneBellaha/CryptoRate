@@ -12,40 +12,57 @@ class CurrencyManager {
 
     private let baseURL = "https://rest.coinapi.io/v1/exchangerate/"
     private let apiKey = "?apikey=93E0C214-4B73-4597-AB59-9A14899A2E71"
+    private let session: URLSession
 
     let currencyArray = [
         ["BTC", "ETH", "XRP", "LTC", "BCH"],
         ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
     ]
 
-    static var shared = CurrencyManager()
     private var task: URLSessionDataTask?
 
-    private init() {}
+    init(session: URLSession = URLSession(configuration: .default)) {
+        self.session = session
+    }
 
-    func getRates(for currency: String, and cryptoCurrency: String, callBack: @escaping (Result<CurrencyModel?, Error>) -> ()) {
+    enum CurrencyManagerError: Error {
+        case incorrectResponse
+        case undecodableData
+        case noData
+
+        var description: String {
+            switch self {
+            case .incorrectResponse:
+               return "No response"
+            case .undecodableData:
+                return ""
+            case .noData:
+                return ""
+            }
+        }
+    }
+
+    func getRates(for currency: String, and cryptoCurrency: String, callBack: @escaping (Result<CurrencyModel, CurrencyManagerError>) -> ()) {
         guard let request = URL(string: baseURL+cryptoCurrency+"/"+currency+apiKey) else { return }
-        let session = URLSession(configuration: .default)
 
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
+
                 guard let data = data, error == nil else {
-                    callBack(.failure(error!)) // mieux déballer
+                    callBack(.failure(.noData))
                     return
                 }
                 guard let response = response as? HTTPURLResponse,
                     response.statusCode == 200 else {
-                        callBack(.failure(error!))
+                        callBack(.failure(.incorrectResponse))
                         return
                 }
                 guard let responseJson = try? JSONDecoder().decode(CurrencyData.self, from: data) else {
-                    callBack(.failure(error!))
+                    callBack(.failure(.undecodableData))
                     return
                 }
                 callBack(.success(CurrencyModel(rate: responseJson.rate)))
             }
-        }
         task?.resume()
     }
 }

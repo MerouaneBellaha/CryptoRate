@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var cryptoCurrencyLabel: UILabel!
     @IBOutlet weak var currencyPicker: UIPickerView!
 
+    let currencyManager = CurrencyManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         currencyPicker.setValue(#colorLiteral(red: 1, green: 0.7497689128, blue: 0.006502680946, alpha: 1), forKeyPath: "textColor")
@@ -25,32 +27,34 @@ class ViewController: UIViewController {
 
 extension ViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return CurrencyManager.shared.currencyArray.count
+        return currencyManager.currencyArray.count
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return CurrencyManager.shared.currencyArray[component].count
+        return currencyManager.currencyArray[component].count
     }
 }
 
 extension ViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return CurrencyManager.shared.currencyArray[component][row]
+        return currencyManager.currencyArray[component][row]
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let cryptoCurrency = CurrencyManager.shared.currencyArray[0][pickerView.selectedRow(inComponent: 0)]
-        let currency = CurrencyManager.shared.currencyArray[1][pickerView.selectedRow(inComponent: 1)]
+        let cryptoCurrency = currencyManager.currencyArray[0][pickerView.selectedRow(inComponent: 0)]
+        let currency = currencyManager.currencyArray[1][pickerView.selectedRow(inComponent: 1)]
         cryptoCurrencyLabel.text = cryptoCurrency
         currencyLabel.text = currency
 
 
-        CurrencyManager.shared.getRates(for: currency, and: cryptoCurrency) { (result) in
+        currencyManager.getRates(for: currency, and: cryptoCurrency) { [weak self] result in
             switch result {
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error.description)
             case .success(let rate):
-                self.rateLabel.text = rate?.formatedRate
+                DispatchQueue.main.async {
+                    self?.rateLabel.text = rate.formatedRate
+                }
             }
         }
     }
